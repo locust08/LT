@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050608;
+  --foreground: #f5f7fb;
+  --muted: rgba(245, 247, 251, 0.68);
+  --line: rgba(111, 130, 163, 0.12);
+  --accent-blue: #2465ff;
+  --accent-gold: #f3bf63;
+  --accent-green: #5fdd76;
+  --accent-violet: #cf56e2;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-heading);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(circle at 50% 15%, rgba(27, 44, 79, 0.24), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(11, 16, 28, 0.95), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px),
+    linear-gradient(var(--line) 1px, transparent 1px),
+    #050608;
+  background-size: auto, auto, auto, 72px 72px, 72px 72px, auto;
+  color: var(--foreground);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: transparent;
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+canvas {
+  display: block;
+}
+
+.text-shadow-title {
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
+}
+
+.site-shell {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+.page-noise::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px),
+    radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px),
+    radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px);
+  background-size: 240px 240px, 360px 360px, 280px 280px;
+  opacity: 0.12;
+  mix-blend-mode: screen;
+  z-index: 2;
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 1.9s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out both;
+}
